@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot name="goddard">
+    <link name="base_link" />
+
+    <link name="body">
+        <visual>
+            <geometry>
+                <mesh filename="package://urdf_tutorial/meshes/l_finger.dae" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="base_to_right_leg" type="fixed">
+        <parent link="base_link" />
+        <child link="right_leg" />
+    </joint>
+
+</robot>
