@@ -5,14 +5,14 @@
     <link name="body">
         <visual>
             <geometry>
-                <mesh filename="package://urdf_tutorial/meshes/l_finger.dae" />
+                <mesh filename="package://goddard_description/meshes/body.stl" scale = "0.01 0.01 0.01" />
             </geometry>
         </visual>
     </link>
 
-    <joint name="base_to_right_leg" type="fixed">
+    <joint name="body_to_base_link" type="fixed">
         <parent link="base_link" />
-        <child link="right_leg" />
+        <child link="body" />
     </joint>
 
 </robot>
