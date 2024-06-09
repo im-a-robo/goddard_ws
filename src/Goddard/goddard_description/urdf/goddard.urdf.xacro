@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<robot name="goddard">
+    <link name="base_link" />
+
+    <link name="body">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/body.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="body_to_base_link" type="fixed">
+        <parent link="base_link" />
+        <child link="body" />
+        <origin xyz="0 0 0.1226" />
+    </joint>
+
+    <link name="front_left_hip">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="front_left_hip_to_body" type="revolute">
+        <parent link="body" />
+        <child link="front_left_hip" />
+        <origin xyz="0.07900 0.05713 0.003000" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+
+    </joint>
+
+    <link name="front_left_femur">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.0246 0 -0.02835" />
+        </visual>
+    </link>
+
+    <joint name="front_left_femur_to_front_left_hip" type="revolute">
+        <parent link="front_left_hip" />
+        <child link="front_left_femur" />
+        <origin xyz="0 0.03558 -0.00469" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+
+    <link name="front_left_tibia">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0.01861 0 -0.02100" />
+        </visual>
+    </link>
+
+    <joint name="front_left_tibia_to_front_left_femur" type="revolute">
+        <parent link="front_left_femur" />
+        <child link="front_left_tibia" />
+        <origin xyz="-0.05367 0 -0.05261" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="front_right_hip">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 3.142" />
+        </visual>
+    </link>
+
+    <joint name="front_right_hip_to_body" type="revolute">
+        <parent link="body" />
+        <child link="front_right_hip" />
+        <origin xyz="0.07900 -0.05713 0.003000" />
+        <axis xyz="-1 0 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="front_right_femur">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.0246 0 -0.02835" />
+        </visual>
+    </link>
+
+    <joint name="front_right_femur_to_front_right_hip" type="revolute">
+        <parent link="front_right_hip" />
+        <child link="front_right_femur" />
+        <origin xyz="0 -0.03558 -0.00469" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="front_right_tibia">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0.01861 0 -0.02100" />
+        </visual>
+    </link>
+
+    <joint name="front_right_tibia_to_front_right_femur" type="revolute">
+        <parent link="front_right_femur" />
+        <child link="front_right_tibia" />
+        <origin xyz="-0.05367 0 -0.05261" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+
+    <link name="back_left_hip">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 3.142" />
+        </visual>
+    </link>
+
+    <joint name="back_left_hip_to_body" type="revolute">
+        <parent link="body" />
+        <child link="back_left_hip" />
+        <origin xyz="-0.07900 0.05713 0.003000" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="back_left_femur">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.0246 0 -0.02835" />
+        </visual>
+    </link>
+
+    <joint name="back_left_femur_to_back_left_hip" type="revolute">
+        <parent link="back_left_hip" />
+        <child link="back_left_femur" />
+        <origin xyz="0 0.03558 -0.00469" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="back_left_tibia">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0.01861 0 -0.02100" />
+        </visual>
+    </link>
+
+    <joint name="back_left_tibia_to_back_left_femur" type="revolute">
+        <parent link="back_left_femur" />
+        <child link="back_left_tibia" />
+        <origin xyz="-0.05367 0 -0.05261" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="back_right_hip">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 3.142" />
+        </visual>
+    </link>
+
+    <joint name="back_right_hip_to_body" type="revolute">
+        <parent link="body" />
+        <child link="back_right_hip" />
+        <origin xyz="-0.07900 -0.05713 0.003000" />
+        <axis xyz="-1 0 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="back_right_femur">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.0246 0 -0.02835" />
+        </visual>
+    </link>
+
+    <joint name="back_right_femur_to_back_right_hip" type="revolute">
+        <parent link="back_right_hip" />
+        <child link="back_right_femur" />
+        <origin xyz="0 -0.03558 -0.00469" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="back_right_tibia">
+        <visual>
+            <geometry>
+                <mesh filename="package://goddard_description/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0.01861 0 -0.02100" />
+        </visual>
+    </link>
+
+    <joint name="back_right_tibia_to_back_right_femur" type="revolute">
+        <parent link="back_right_femur" />
+        <child link="back_right_tibia" />
+        <origin xyz="-0.05367 0 -0.05261" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+</robot>
