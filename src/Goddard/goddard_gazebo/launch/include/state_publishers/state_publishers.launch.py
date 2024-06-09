@@ -19,7 +19,7 @@ def generate_launch_description():
     use_joint_state_publisher_gui = LaunchConfiguration('use_joint_state_publisher_gui', default='true')
 
     # Get urdf path a run xacro command to read the urdf
-    urdf_path = os.path.join(pkg_goddard_description, 'urdf', 'example_robot.urdf.xacro')
+    urdf_path = os.path.join(pkg_goddard_description, 'urdf', 'goddard.urdf.xacro')
     robot_desc = xacro.process_file(urdf_path).toxml()
 
     # Nodes
