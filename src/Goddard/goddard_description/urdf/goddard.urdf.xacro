@@ -8,6 +8,15 @@
                 <mesh filename="package://goddard_description/meshes/body.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/body.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="6.738" />
+                <inertia ixx="16.22" ixy="0.000105591" ixz="0.000054509" iyy="44.31"
+                    iyz="-0.014467893" izz="50.43" />
+            </inertial>
         </visual>
     </link>
 
@@ -17,12 +26,22 @@
         <origin xyz="0 0 0.1226" />
     </joint>
 
+    <!-- Front Left Components  -->
+
     <link name="front_left_hip">
         <visual>
             <geometry>
                 <mesh filename="package://goddard_description/meshes/hip.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
         </visual>
     </link>
 
@@ -41,6 +60,14 @@
                 <mesh filename="package://goddard_description/meshes/femur.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="-0.0246 0 -0.02835" />
         </visual>
     </link>
@@ -60,6 +87,14 @@
                 <mesh filename="package://goddard_description/meshes/tibia.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="0.01861 0 -0.02100" />
         </visual>
     </link>
@@ -72,12 +107,22 @@
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
+    <!-- Front Right Components -->
+
     <link name="front_right_hip">
         <visual>
             <geometry>
                 <mesh filename="package://goddard_description/meshes/hip.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="0 0 0" rpy="0 0 3.142" />
         </visual>
     </link>
@@ -96,6 +141,14 @@
                 <mesh filename="package://goddard_description/meshes/femur.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="-0.0246 0 -0.02835" />
         </visual>
     </link>
@@ -114,6 +167,14 @@
                 <mesh filename="package://goddard_description/meshes/tibia.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="0.01861 0 -0.02100" />
         </visual>
     </link>
@@ -127,12 +188,22 @@
     </joint>
 
 
+    <!-- Back Left Components -->
+
     <link name="back_left_hip">
         <visual>
             <geometry>
                 <mesh filename="package://goddard_description/meshes/hip.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="0 0 0" rpy="0 0 3.142" />
         </visual>
     </link>
@@ -151,6 +222,14 @@
                 <mesh filename="package://goddard_description/meshes/femur.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="-0.0246 0 -0.02835" />
         </visual>
     </link>
@@ -169,6 +248,14 @@
                 <mesh filename="package://goddard_description/meshes/tibia.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="0.01861 0 -0.02100" />
         </visual>
     </link>
@@ -181,12 +268,22 @@
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
+    <!-- Back Right Components -->
+
     <link name="back_right_hip">
         <visual>
             <geometry>
                 <mesh filename="package://goddard_description/meshes/hip.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="0 0 0" rpy="0 0 3.142" />
         </visual>
     </link>
@@ -205,6 +302,14 @@
                 <mesh filename="package://goddard_description/meshes/femur.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="-0.0246 0 -0.02835" />
         </visual>
     </link>
@@ -223,6 +328,14 @@
                 <mesh filename="package://goddard_description/meshes/tibia.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
+            <collision>
+                <mesh filename="package://goddard_description/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </collision>
+            <inertial>
+                <mass value="0.2" />
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+            </inertial>
             <origin xyz="0.01861 0 -0.02100" />
         </visual>
     </link>
