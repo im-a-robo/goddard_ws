@@ -39,6 +39,12 @@ def generate_launch_description():
         }.items()
     )
 
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_goddard_gazebo, 'launch', 'include', 'gazebo', 'gazebo.launch.py')
+        )
+    )
+
 
     return LaunchDescription([
         DeclareLaunchArgument('use_sim_time',
@@ -52,7 +58,8 @@ def generate_launch_description():
                               description='Use the joint state publisher gui when true'),    
         
         rviz,
-        state_publishers
+        state_publishers,
+        gazebo
         
 ])
     

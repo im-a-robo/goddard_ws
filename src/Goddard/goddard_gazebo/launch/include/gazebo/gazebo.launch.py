@@ -27,7 +27,7 @@ def generate_launch_description():
                         output='screen')
 
 
-    return LaunchDescription([ 
+    return LaunchDescription([
         gazebo,
         spawn_entity
     ])
