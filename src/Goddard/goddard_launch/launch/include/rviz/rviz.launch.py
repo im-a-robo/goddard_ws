@@ -22,7 +22,7 @@ def generate_launch_description():
                 executable='rviz2',
                 arguments=[
                     '-d',
-                    os.path.join(pkg_goddard_description, 'rviz', 'goddard_gazebo.rviz')
+                    os.path.join(pkg_goddard_description, 'rviz', 'goddard.rviz')
                 ],
                 parameters=[{
                     'use_sim_time': use_sim_time

@@ -30,7 +30,7 @@
 
     <!-- Front Left Components  -->
 
-    <link name="front_left_hip">
+    <link name="fl_hip">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -50,16 +50,16 @@
         </visual>
     </link>
 
-    <joint name="front_left_hip_to_body" type="revolute">
+    <joint name="fl_hip_to_body" type="revolute">
         <parent link="body" />
-        <child link="front_left_hip" />
+        <child link="fl_hip" />
         <origin xyz="0.07900 0.05713 0.003000" rpy="0 0 0" />
         <axis xyz="1 0 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
 
     </joint>
 
-    <link name="front_left_femur">
+    <link name="fl_femur">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -81,16 +81,16 @@
         </visual>
     </link>
 
-    <joint name="front_left_femur_to_front_left_hip" type="revolute">
-        <parent link="front_left_hip" />
-        <child link="front_left_femur" />
+    <joint name="fl_femur_to_hip" type="revolute">
+        <parent link="fl_hip" />
+        <child link="fl_femur" />
         <origin xyz="0 0.03558 -0.00469" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
 
-    <link name="front_left_tibia">
+    <link name="fl_tibia">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -112,9 +112,9 @@
         </visual>
     </link>
 
-    <joint name="front_left_tibia_to_front_left_femur" type="revolute">
-        <parent link="front_left_femur" />
-        <child link="front_left_tibia" />
+    <joint name="fl_tibia_to_femur" type="revolute">
+        <parent link="fl_femur" />
+        <child link="fl_tibia" />
         <origin xyz="-0.05367 0 -0.05261" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
@@ -122,7 +122,7 @@
 
     <!-- Front Right Components -->
 
-    <link name="front_right_hip">
+    <link name="fr_hip">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -144,15 +144,15 @@
         </visual>
     </link>
 
-    <joint name="front_right_hip_to_body" type="revolute">
+    <joint name="fr_hip_to_body" type="revolute">
         <parent link="body" />
-        <child link="front_right_hip" />
+        <child link="fr_hip" />
         <origin xyz="0.07900 -0.05713 0.003000" rpy="0 0 0" />
         <axis xyz="-1 0 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
-    <link name="front_right_femur">
+    <link name="fr_femur">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -174,15 +174,15 @@
         </visual>
     </link>
 
-    <joint name="front_right_femur_to_front_right_hip" type="revolute">
-        <parent link="front_right_hip" />
-        <child link="front_right_femur" />
+    <joint name="fr_femur_to_hip" type="revolute">
+        <parent link="fr_hip" />
+        <child link="fr_femur" />
         <origin xyz="0 -0.03558 -0.00469" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
-    <link name="front_right_tibia">
+    <link name="fr_tibia">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -204,9 +204,9 @@
         </visual>
     </link>
 
-    <joint name="front_right_tibia_to_front_right_femur" type="revolute">
-        <parent link="front_right_femur" />
-        <child link="front_right_tibia" />
+    <joint name="fr_tibia_to_femur" type="revolute">
+        <parent link="fr_femur" />
+        <child link="fr_tibia" />
         <origin xyz="-0.05367 0 -0.05261" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
@@ -215,7 +215,7 @@
 
     <!-- Back Left Components -->
 
-    <link name="back_left_hip">
+    <link name="bl_hip">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -237,15 +237,15 @@
         </visual>
     </link>
 
-    <joint name="back_left_hip_to_body" type="revolute">
+    <joint name="bl_hip_to_body" type="revolute">
         <parent link="body" />
-        <child link="back_left_hip" />
+        <child link="bl_hip" />
         <origin xyz="-0.07900 0.05713 0.003000" rpy="0 0 0" />
         <axis xyz="1 0 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
-    <link name="back_left_femur">
+    <link name="bl_femur">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -267,15 +267,15 @@
         </visual>
     </link>
 
-    <joint name="back_left_femur_to_back_left_hip" type="revolute">
-        <parent link="back_left_hip" />
-        <child link="back_left_femur" />
+    <joint name="bl_femur_to_hip" type="revolute">
+        <parent link="bl_hip" />
+        <child link="bl_femur" />
         <origin xyz="0 0.03558 -0.00469" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
-    <link name="back_left_tibia">
+    <link name="bl_tibia">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -297,9 +297,9 @@
         </visual>
     </link>
 
-    <joint name="back_left_tibia_to_back_left_femur" type="revolute">
-        <parent link="back_left_femur" />
-        <child link="back_left_tibia" />
+    <joint name="bl_tibia_to_femur" type="revolute">
+        <parent link="bl_femur" />
+        <child link="bl_tibia" />
         <origin xyz="-0.05367 0 -0.05261" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
@@ -307,7 +307,7 @@
 
     <!-- Back Right Components -->
 
-    <link name="back_right_hip">
+    <link name="br_hip">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -329,15 +329,15 @@
         </visual>
     </link>
 
-    <joint name="back_right_hip_to_body" type="revolute">
+    <joint name="br_hip_to_body" type="revolute">
         <parent link="body" />
-        <child link="back_right_hip" />
+        <child link="br_hip" />
         <origin xyz="-0.07900 -0.05713 0.003000" rpy="0 0 0" />
         <axis xyz="-1 0 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
-    <link name="back_right_femur">
+    <link name="br_femur">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -359,15 +359,15 @@
         </visual>
     </link>
 
-    <joint name="back_right_femur_to_back_right_hip" type="revolute">
-        <parent link="back_right_hip" />
-        <child link="back_right_femur" />
+    <joint name="br_femur_to_hip" type="revolute">
+        <parent link="br_hip" />
+        <child link="br_femur" />
         <origin xyz="0 -0.03558 -0.00469" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
-    <link name="back_right_tibia">
+    <link name="br_tibia">
         <inertial>
             <mass value="1" />
             <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
@@ -389,12 +389,15 @@
         </visual>
     </link>
 
-    <joint name="back_right_tibia_to_back_right_femur" type="revolute">
-        <parent link="back_right_femur" />
-        <child link="back_right_tibia" />
+    <joint name="br_tibia_to_femur" type="revolute">
+        <parent link="br_femur" />
+        <child link="br_tibia" />
         <origin xyz="-0.05367 0 -0.05261" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
+
+    <xacro:include filename="ros2_control.xacro" />
+
 
 </robot>

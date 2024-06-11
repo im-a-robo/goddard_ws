@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <ros2_control name="GazeboSystem" type="system">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+
+        <!-- Front Left Hardware -->
+        <joint name="fl_hip_to_body">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+        <joint name="fl_femur_to_hip">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+        <joint name="fl_tibia_to_femur">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+
+        <!-- Front Right Hardware -->
+        <joint name="fr_hip_to_body">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+        <joint name="fr_femur_to_hip">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+        <joint name="fr_tibia_to_femur">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+
+        <!-- Back Left Hardware -->
+        <joint name="bl_hip_to_body">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+        <joint name="bl_femur_to_hip">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+        <joint name="bl_tibia_to_femur">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+
+        <!-- Back Right Hardware -->
+        <joint name="br_hip_to_body">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+        <joint name="br_femur_to_hip">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+        <joint name="br_tibia_to_femur">
+            <command_interface name="position">
+                <param name="min">-1.571</param>
+                <param name="max">1.571</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+    </ros2_control>
+
+    <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <parameters>$(find goddard_control)/config/goddard_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+</robot>

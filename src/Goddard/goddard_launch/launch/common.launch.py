@@ -13,7 +13,7 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
 
     # ROS packages
-    pkg_goddard_gazebo = get_package_share_directory('goddard_gazebo')
+    pkg_goddard_launch = get_package_share_directory('goddard_launch')
     
     # Launch Arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
@@ -23,7 +23,7 @@ def generate_launch_description():
     # Launch Descriptions
     rviz = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_goddard_gazebo, 'launch', 'include', 'rviz', 'rviz.launch.py')),
+            os.path.join(pkg_goddard_launch, 'launch', 'include', 'rviz', 'rviz.launch.py')),
         launch_arguments={
             'use_sim_time': use_sim_time
             }.items(),
@@ -32,7 +32,7 @@ def generate_launch_description():
     
     state_publishers = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_goddard_gazebo, 'launch', 'include', 'state_publishers', 'state_publishers.launch.py')),
+            os.path.join(pkg_goddard_launch, 'launch', 'include', 'state_publishers', 'state_publishers.launch.py')),
         launch_arguments={
             'use_sim_time': use_sim_time,
             'use_join_state_publisher_gui': use_join_state_publisher_gui
@@ -41,8 +41,13 @@ def generate_launch_description():
 
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_goddard_gazebo, 'launch', 'include', 'gazebo', 'gazebo.launch.py')
+            os.path.join(pkg_goddard_launch, 'launch', 'include', 'gazebo', 'gazebo.launch.py')
         )
+    )
+    
+    controllers = Node(package="controller_manager",
+                               executable="spawner",
+                               arguments=["position_controller", "joint_state_broadcaster"]
     )
 
 
@@ -59,7 +64,8 @@ def generate_launch_description():
         
         rviz,
         state_publishers,
-        gazebo
+        gazebo,
+        controllers
         
 ])
     
