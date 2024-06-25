@@ -1,15 +1,20 @@
-#include "kinematics_control/kinematics_interface.hpp"
+#include "kinematics_control/KinematicsInterface.hpp"
 
-kinematics_interface::kinematics_interface(double hip_to_femur_dist, double femur_to_tibia_dist,
-                                           double tibia_to_foot_dist) {
+KinematicsInterface::KinematicsInterface() {}
+
+KinematicsInterface::KinematicsInterface(double hip_to_femur_dist, double femur_to_tibia_dist,
+                                         double tibia_to_foot_dist, std::vector<double>* leg_angles) {
     this->hip_to_femur_dist = hip_to_femur_dist;
     this->femur_to_tibia_dist = femur_to_tibia_dist;
     this->tibia_to_foot_dist = tibia_to_foot_dist;
 
-    leg_angle_map = std::unordered_map{std::pair{"hip_delta", 0.0}, {"femur_delta", 0.0}, {"tibia_delta", 0.0}};
+    this->leg_angles = leg_angles;
+    leg_angles->at(0) = 0;
+    leg_angles->at(1) = 0;
+    leg_angles->at(2) = 0;
 }
 
-double kinematics_interface::calc_hip_joint_delta(double y, double z) {
+double KinematicsInterface::calc_hip_joint_delta(double y, double z) {
     double hypot = sqrt(pow(z, 2) + pow(y, 2));
 
     double alpha = acos(abs(z) / hypot);
@@ -20,7 +25,7 @@ double kinematics_interface::calc_hip_joint_delta(double y, double z) {
     return q1;
 }
 
-std::tuple<double, double> kinematics_interface::calc_femur_and_tibia_joint_delta(double x, double y) {
+std::tuple<double, double> KinematicsInterface::calc_femur_and_tibia_joint_delta(double x, double y) {
     double hypot = sqrt(pow(x, 2) + pow(y, 2));
     double phi = acos(abs(x) / hypot);
     double lowercase_phi = acos((pow(femur_to_tibia_dist, 2) + pow(x, 2) + pow(y, 2) - pow(tibia_to_foot_dist, 2)) /
@@ -40,16 +45,14 @@ std::tuple<double, double> kinematics_interface::calc_femur_and_tibia_joint_delt
     return {q2, q3};
 }
 
-std::unordered_map<const char*, double> kinematics_interface::calc_joint_deltas(double x, double y, double z) {
+void KinematicsInterface::calc_joint_deltas(double x, double y, double z) {
     double q1 = calc_hip_joint_delta(y, z);
 
     double y_prime = -sqrt(pow(y, 2) + pow(z, 2) - pow(hip_to_femur_dist, 2));
 
     auto [q2, q3] = calc_femur_and_tibia_joint_delta(x, y_prime);
 
-    leg_angle_map["hip_delta"] = q1;
-    leg_angle_map["femur_delta"] = q2;
-    leg_angle_map["tibia_delta"] = q3;
-
-    return leg_angle_map;
+    leg_angles->at(0) = 0.5;
+    leg_angles->at(1) = 0.5;
+    leg_angles->at(2) = 1.57;
 }

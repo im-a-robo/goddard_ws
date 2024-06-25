@@ -4,7 +4,7 @@
 using namespace std::placeholders;
 using namespace std::chrono_literals;
 
-TestNode::TestNode(const rclcpp::NodeOptions& options) : Node("ObjPlannerNode", options) {
+TestNode::TestNode(const rclcpp::NodeOptions& options) : Node("TestNode", options) {
     test_pub = this->create_publisher<std_msgs::msg::Float64MultiArray>("/position_controller/commands", 1);
 
     timer = this->create_wall_timer(500ms, std::bind(&TestNode::test_cb, this));

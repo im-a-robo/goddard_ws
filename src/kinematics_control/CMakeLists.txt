@@ -7,20 +7,31 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(kinematics_control src/kinematics_interface.cpp)
+add_executable(kinematics_control src/KinematicsInterface.cpp src/KinematicsControlNode.cpp src/KinematicsControlNode_node.cpp)
 target_include_directories(kinematics_control PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 target_compile_features(kinematics_control PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
+set(dependencies
+        rclcpp
+        std_msgs
+)
+
+ament_target_dependencies(
+        kinematics_control
+        ${dependencies}
+)
 
 install(
-		DIRECTORY kinematics_control
-		DESTINATION share/${PROJECT_NAME}/)
+		TARGETS kinematics_control
+		DESTINATION lib/${PROJECT_NAME}/)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
