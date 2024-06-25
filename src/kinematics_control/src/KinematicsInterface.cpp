@@ -15,20 +15,23 @@ KinematicsInterface::KinematicsInterface(double hip_to_femur_dist, double femur_
 }
 
 double KinematicsInterface::calc_hip_joint_delta(double y, double z) {
-    double hypot = sqrt(pow(z, 2) + pow(y, 2));
+    double hypot = sqrt(sqr(z) + sqr(y));
 
-    double alpha = acos(abs(z) / hypot);
+    double alpha = acos(abs(y) / hypot);
     double beta = acos(hip_to_femur_dist / hypot);
 
-    double q1 = alpha - beta ? y >= 0 : M_PI - alpha - beta;
+    double q1 = y >= 0 ? alpha - beta : M_PI - alpha - beta;
+
+    
 
     return q1;
 }
 
-std::tuple<double, double> KinematicsInterface::calc_femur_and_tibia_joint_delta(double x, double y) {
-    double hypot = sqrt(pow(x, 2) + pow(y, 2));
+std::tuple<double, double> KinematicsInterface::calc_femur_and_tibia_joint_delta(double x, double z) {
+    double hypot = sqrt(sqr(x) + sqr(z));
+
     double phi = acos(abs(x) / hypot);
-    double lowercase_phi = acos((pow(femur_to_tibia_dist, 2) + pow(x, 2) + pow(y, 2) - pow(tibia_to_foot_dist, 2)) /
+    double lowercase_phi = acos((sqr(femur_to_tibia_dist) + sqr(x) + sqr(z) - pow(tibia_to_foot_dist, 2)) /
                                 (2 * femur_to_tibia_dist * hypot));
 
     // Assume that q3 will always be greater than zero for this robot
@@ -39,7 +42,7 @@ std::tuple<double, double> KinematicsInterface::calc_femur_and_tibia_joint_delta
     } else {
         q2 = -M_PI_2 - lowercase_phi + phi;
     }
-    q3 = acos((pow(femur_to_tibia_dist, 2) + pow(tibia_to_foot_dist, 2) - pow(x, 2) - pow(y, 2)) /
+    q3 = acos((sqr(femur_to_tibia_dist) + pow(tibia_to_foot_dist, 2) - sqr(x) - sqr(z)) /
               (2 * femur_to_tibia_dist * tibia_to_foot_dist));
 
     return {q2, q3};
@@ -48,11 +51,11 @@ std::tuple<double, double> KinematicsInterface::calc_femur_and_tibia_joint_delta
 void KinematicsInterface::calc_joint_deltas(double x, double y, double z) {
     double q1 = calc_hip_joint_delta(y, z);
 
-    double y_prime = -sqrt(pow(y, 2) + pow(z, 2) - pow(hip_to_femur_dist, 2));
+    double z_prime = -sqrt(sqr(z) + sqr(y) - sqr(hip_to_femur_dist));
 
-    auto [q2, q3] = calc_femur_and_tibia_joint_delta(x, y_prime);
+    auto [q2, q3] = calc_femur_and_tibia_joint_delta(x, z_prime);
 
-    leg_angles->at(0) = 0.5;
-    leg_angles->at(1) = 0.5;
-    leg_angles->at(2) = 1.57;
+    leg_angles->at(0) = q1;
+    leg_angles->at(1) = q2;
+    leg_angles->at(2) = q3;
 }
