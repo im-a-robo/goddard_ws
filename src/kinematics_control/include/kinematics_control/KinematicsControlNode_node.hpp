@@ -1,8 +1,13 @@
 #pragma once
 
 #include "KinematicsInterface.hpp"
+#include "geometry_msgs/msg/pose_stamped.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/float64_multi_array.hpp"
+#include "tf2/exceptions.h"
+#include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
+#include "tf2_ros/buffer.h"
+#include "tf2_ros/transform_listener.h"
 
 class KinematicsControlNode : public rclcpp::Node {
 private:
@@ -14,6 +19,13 @@ private:
     std::vector<double> fl_leg_angles;
 
     KinematicsInterface interface;
+
+    geometry_msgs::msg::PoseStamped test_point;
+
+    bool transformed;
+
+    std::unique_ptr<tf2_ros::Buffer> tf_buffer;
+    std::shared_ptr<tf2_ros::TransformListener> tf_listener;
 
 public:
     KinematicsControlNode(const rclcpp::NodeOptions& options);

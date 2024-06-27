@@ -9,15 +9,34 @@ KinematicsControlNode::KinematicsControlNode(const rclcpp::NodeOptions& options)
 
     timer = this->create_wall_timer(500ms, std::bind(&KinematicsControlNode::test_cb, this));
 
+    tf_buffer = std::make_unique<tf2_ros::Buffer>(this->get_clock());
+
+    tf_listener = std::make_shared<tf2_ros::TransformListener>(*tf_buffer);
+
     fl_leg_angles = {0, 0, 0};
     interface = KinematicsInterface(0.03558, 0.075, 0.0803, &fl_leg_angles);
-    interface.calc_joint_deltas(0, 0.1, (0.075 + 0.0803));
+
+    test_point.pose.position.x = 0;
+    test_point.pose.position.y = 0;
+    test_point.pose.position.z = -0.02;
+    test_point.header.frame_id = "fl_foot";
+
+    transformed = false;
 }
 
 void KinematicsControlNode::test_cb() {
     std_msgs::msg::Float64MultiArray msg;
 
-    msg.data = {0, 0, 0, fl_leg_angles.at(0), fl_leg_angles.at(1), fl_leg_angles.at(2), 0, 0, 0, 0, 0, 0};
+    if (!transformed) {
+        auto t = tf_buffer->lookupTransform("fl_hip", "fl_foot", tf2::TimePointZero);
+
+        tf2::doTransform(test_point, test_point, t);
+
+        interface.calc_joint_deltas(test_point.pose.position.x, test_point.pose.position.y, test_point.pose.position.z);
+        transformed = true;
+    }
+
+    msg.data = {fl_leg_angles.at(0), fl_leg_angles.at(1), fl_leg_angles.at(2), 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     test_pub->publish(msg);
 }
