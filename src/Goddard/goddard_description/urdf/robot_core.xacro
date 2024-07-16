@@ -1,0 +1,432 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="goddard">
+    <link name="base_link" />
+
+    <link name="body">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/body.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/body.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="body_to_base_link" type="fixed">
+        <parent link="base_link" />
+        <child link="body" />
+        <origin xyz="0 0 0.1226" rpy="0 0 0" />
+    </joint>
+
+    <!-- Front Left Components  -->
+
+    <link name="fl_hip">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="fl_hip_to_body" type="revolute">
+        <parent link="body" />
+        <child link="fl_hip" />
+        <origin xyz="0.07900 0.05713 0.003000" rpy="0 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+
+    </joint>
+
+    <link name="fl_femur">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 -0.03806" rpy="0 -0.785398 0" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 -0.03806" rpy="0 -0.785398 0" />
+        </visual>
+    </link>
+
+    <joint name="fl_femur_to_hip" type="revolute">
+        <parent link="fl_hip" />
+        <child link="fl_femur" />
+        <origin xyz="0 0.03558 -0.00300" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+
+    <link name="fl_tibia">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.0030 0 -0.03058" rpy="0 0.733038 0" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.0030 0 -0.03058" rpy="0 0.733038 0" />
+        </visual>
+    </link>
+
+    <joint name="fl_tibia_to_femur" type="revolute">
+        <parent link="fl_femur" />
+        <child link="fl_tibia" />
+        <origin xyz="0 0 -0.07560" rpy="0 0 0" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="fl_foot" />
+
+    <joint name="fl_foot_to_tibia" type="fixed">
+        <parent link="fl_tibia" />
+        <child link="fl_foot" />
+        <origin xyz="0.05367 0 -0.0543" rpy="0 0 0" />
+    </joint>
+
+    <!-- Front Right Components -->
+
+    <link name="fr_hip">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </visual>
+    </link>
+
+    <joint name="fr_hip_to_body" type="revolute">
+        <parent link="body" />
+        <child link="fr_hip" />
+        <origin xyz="0.07900 -0.05713 0.003000" rpy="0 0 3.142" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="fr_femur">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0.0246 0 -0.02835" rpy="0 -1.571 0" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0.0246 0 -0.02835" rpy="0 -1.571 0" />
+        </visual>
+    </link>
+
+    <joint name="fr_femur_to_hip" type="revolute">
+        <parent link="fr_hip" />
+        <child link="fr_femur" />
+        <origin xyz="0 0.03558 -0.00469" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="fr_tibia">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.01861 0 -0.02100" rpy="0 0 3.142" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.01861 0 -0.02100" rpy="0 0 3.142" />
+        </visual>
+    </link>
+
+    <joint name="fr_tibia_to_femur" type="revolute">
+        <parent link="fr_femur" />
+        <child link="fr_tibia" />
+        <origin xyz="0.05367 0 -0.05261" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="fr_foot" />
+
+    <joint name="fr_foot_to_tibia" type="fixed">
+        <parent link="fr_tibia" />
+        <child link="fr_foot" />
+        <origin xyz="-0.05367 0 -0.0543" rpy="0 0 0" />
+    </joint>
+
+
+    <!-- Back Left Components -->
+
+    <link name="bl_hip">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 3.142" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 3.142" />
+        </visual>
+    </link>
+
+    <joint name="bl_hip_to_body" type="revolute">
+        <parent link="body" />
+        <child link="bl_hip" />
+        <origin xyz="-0.07900 0.05713 0.003000" rpy="0 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="bl_femur">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.0246 0 -0.02835" rpy="0 0 0" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.0246 0 -0.02835" rpy="0 0 0" />
+        </visual>
+    </link>
+
+    <joint name="bl_femur_to_hip" type="revolute">
+        <parent link="bl_hip" />
+        <child link="bl_femur" />
+        <origin xyz="0 0.03558 -0.00469" rpy="0 0 0" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="bl_tibia">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0.01861 0 -0.02100" rpy="0 0 0" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0.01861 0 -0.02100" rpy="0 0 0" />
+        </visual>
+    </link>
+
+    <joint name="bl_tibia_to_femur" type="revolute">
+        <parent link="bl_femur" />
+        <child link="bl_tibia" />
+        <origin xyz="-0.05367 0 -0.05261" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="bl_foot" />
+
+    <joint name="bl_foot_to_tibia" type="fixed">
+        <parent link="bl_tibia" />
+        <child link="bl_foot" />
+        <origin xyz="0.05367 0 -0.0543" rpy="0 0 0" />
+    </joint>
+
+    <!-- Back Right Components -->
+
+    <link name="br_hip">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/hip.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </visual>
+    </link>
+
+    <joint name="br_hip_to_body" type="revolute">
+        <parent link="body" />
+        <child link="br_hip" />
+        <origin xyz="-0.07900 -0.05713 0.003000" rpy="0 0 3.142" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="br_femur">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0.0246 0 -0.02835" rpy="0 -1.571 0" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0.0246 0 -0.02835" rpy="0 -1.571 0" />
+        </visual>
+    </link>
+
+    <joint name="br_femur_to_hip" type="revolute">
+        <parent link="br_hip" />
+        <child link="br_femur" />
+        <origin xyz="0 0.03558 -0.00469" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="br_tibia">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1"
+                iyz="0" izz="0.1" />
+        </inertial>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.01861 0 -0.02100" rpy="0 0 3.142" />
+        </collision>
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="-0.01861 0 -0.02100" rpy="0 0 3.142" />
+        </visual>
+    </link>
+
+    <joint name="br_tibia_to_femur" type="revolute">
+        <parent link="br_femur" />
+        <child link="br_tibia" />
+        <origin xyz="0.05367 0 -0.05261" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
+    </joint>
+
+    <link name="br_foot" />
+
+    <joint name="br_foot_to_tibia" type="fixed">
+        <parent link="br_tibia" />
+        <child link="br_foot" />
+        <origin xyz="-0.05367 0 -0.0543" rpy="0 0 0" />
+    </joint>
+
+</robot>

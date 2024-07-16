@@ -3,7 +3,8 @@ Panels:
     Help Height: 70
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /Marker1/Topic1
       Splitter Ratio: 0.5
     Tree Height: 296
   - Class: rviz_common/Views
@@ -50,71 +51,87 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        back_left_femur:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        back_left_hip:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        back_left_tibia:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        back_right_femur:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        back_right_hip:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        back_right_tibia:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        bl_femur:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        bl_foot:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        bl_hip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        bl_tibia:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         body:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_left_femur:
+        br_femur:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_left_hip:
+        br_foot:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        br_hip:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_left_tibia:
+        br_tibia:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_right_femur:
+        fl_femur:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_right_hip:
+        fl_foot:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        fl_hip:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_right_tibia:
+        fl_tibia:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fr_femur:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fr_foot:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        fr_hip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fr_tibia:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -128,63 +145,31 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz_default_plugins/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        back_left_femur:
-          Value: true
-        back_left_hip:
-          Value: true
-        back_left_tibia:
-          Value: true
-        back_right_femur:
-          Value: true
-        back_right_hip:
-          Value: true
-        back_right_tibia:
-          Value: true
-        base_link:
-          Value: true
-        body:
-          Value: true
-        front_left_femur:
-          Value: true
-        front_left_hip:
-          Value: true
-        front_left_tibia:
-          Value: true
-        front_right_femur:
-          Value: true
-        front_right_hip:
-          Value: true
-        front_right_tibia:
-          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        base_link:
-          body:
-            back_left_hip:
-              back_left_femur:
-                back_left_tibia:
-                  {}
-            back_right_hip:
-              back_right_femur:
-                back_right_tibia:
-                  {}
-            front_left_hip:
-              front_left_femur:
-                front_left_tibia:
-                  {}
-            front_right_hip:
-              front_right_femur:
-                front_right_tibia:
-                  {}
+        {}
       Update Interval: 0
+      Value: false
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Marker
+      Namespaces:
+        test_point: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /test_point_vis
       Value: true
   Enabled: true
   Global Options:
@@ -201,26 +186,126 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.7000000476837158
+      Distance: 0.18871280550956726
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.0027015290688723326
+        Y: 0.0877751037478447
+        Z: 0.10446223616600037
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.33000001311302185
-      Target Frame: <Fixed Frame>
+      Pitch: 0.9099998474121094
+      Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 5.5
-    Saved: ~
+      Yaw: 1.061829924583435
+    Saved:
+      - Class: rviz_default_plugins/Orbit
+        Distance: 0.18871280550956726
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Focal Point:
+          X: -0.0027015290688723326
+          Y: 0.0877751037478447
+          Z: 0.10446223616600037
+        Focal Shape Fixed Size: true
+        Focal Shape Size: 0.05000000074505806
+        Invert Z Axis: false
+        Name: Orbit
+        Near Clip Distance: 0.009999999776482582
+        Pitch: 0.9099998474121094
+        Target Frame: base_link
+        Value: Orbit (rviz)
+        Yaw: 1.061829924583435
+      - Class: rviz_default_plugins/Orbit
+        Distance: 0.18871280550956726
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Focal Point:
+          X: -0.0027015290688723326
+          Y: 0.0877751037478447
+          Z: 0.10446223616600037
+        Focal Shape Fixed Size: true
+        Focal Shape Size: 0.05000000074505806
+        Invert Z Axis: false
+        Name: Orbit
+        Near Clip Distance: 0.009999999776482582
+        Pitch: 0.9099998474121094
+        Target Frame: base_link
+        Value: Orbit (rviz)
+        Yaw: 1.061829924583435
+      - Class: rviz_default_plugins/Orbit
+        Distance: 0.18871280550956726
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Focal Point:
+          X: -0.0027015290688723326
+          Y: 0.0877751037478447
+          Z: 0.10446223616600037
+        Focal Shape Fixed Size: true
+        Focal Shape Size: 0.05000000074505806
+        Invert Z Axis: false
+        Name: Orbit
+        Near Clip Distance: 0.009999999776482582
+        Pitch: 0.9099998474121094
+        Target Frame: base_link
+        Value: Orbit (rviz)
+        Yaw: 1.061829924583435
+      - Class: rviz_default_plugins/Orbit
+        Distance: 0.18871280550956726
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Focal Point:
+          X: -0.0027015290688723326
+          Y: 0.0877751037478447
+          Z: 0.10446223616600037
+        Focal Shape Fixed Size: true
+        Focal Shape Size: 0.05000000074505806
+        Invert Z Axis: false
+        Name: Orbit
+        Near Clip Distance: 0.009999999776482582
+        Pitch: 0.9099998474121094
+        Target Frame: base_link
+        Value: Orbit (rviz)
+        Yaw: 1.061829924583435
+      - Class: rviz_default_plugins/Orbit
+        Distance: 0.18871280550956726
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Focal Point:
+          X: -0.0027015290688723326
+          Y: 0.0877751037478447
+          Z: 0.10446223616600037
+        Focal Shape Fixed Size: true
+        Focal Shape Size: 0.05000000074505806
+        Invert Z Axis: false
+        Name: Orbit
+        Near Clip Distance: 0.009999999776482582
+        Pitch: 0.9099998474121094
+        Target Frame: base_link
+        Value: Orbit (rviz)
+        Yaw: 1.061829924583435
 Window Geometry:
   Displays:
     collapsed: false

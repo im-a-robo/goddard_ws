@@ -53,6 +53,6 @@ void KinematicsInterface::calc_joint_deltas(double x, double y, double z) {
     auto [q2, q3] = calc_femur_and_tibia_joint_delta(x, z_prime);
 
     leg_angles->at(0) = q1;
-    leg_angles->at(1) = q2;
-    leg_angles->at(2) = q3;
+    leg_angles->at(1) = q2 - M_PI_2;
+    leg_angles->at(2) = q3 + M_PI_2;
 }

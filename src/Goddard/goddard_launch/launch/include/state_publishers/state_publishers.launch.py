@@ -57,7 +57,7 @@ def generate_launch_description():
         # Nodes
         robot_state_publisher,
         # join_state_publisher,
-        join_state_publisher_gui
+        # join_state_publisher_gui
     ])
     
 
