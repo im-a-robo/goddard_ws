@@ -86,7 +86,7 @@
         <parent link="fl_hip" />
         <child link="fl_femur" />
         <origin xyz="0 0.03558 -0.00300" rpy="0 0 0" />
-        <axis xyz="0 1 0" />
+        <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
@@ -243,14 +243,14 @@
                 <mesh filename="file://$(find goddard_description)/meshes/hip.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
-            <origin xyz="0 0 0" rpy="0 0 3.142" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
         </collision>
         <visual>
             <geometry>
                 <mesh filename="file://$(find goddard_description)/meshes/hip.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
-            <origin xyz="0 0 0" rpy="0 0 3.142" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
         </visual>
     </link>
 
@@ -273,21 +273,21 @@
                 <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
-            <origin xyz="-0.0246 0 -0.02835" rpy="0 0 0" />
+            <origin xyz="0 0 -0.03806" rpy="0 -0.785398 0" />
         </collision>
         <visual>
             <geometry>
                 <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
-            <origin xyz="-0.0246 0 -0.02835" rpy="0 0 0" />
+            <origin xyz="-0 0 -0.03806" rpy="0 -0.785398 0" />
         </visual>
     </link>
 
     <joint name="bl_femur_to_hip" type="revolute">
         <parent link="bl_hip" />
         <child link="bl_femur" />
-        <origin xyz="0 0.03558 -0.00469" rpy="0 0 0" />
+        <origin xyz="0 0.03558 -0.00300" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
@@ -303,22 +303,22 @@
                 <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
-            <origin xyz="0.01861 0 -0.02100" rpy="0 0 0" />
+            <origin xyz="-0.0030 0 -0.03058" rpy="0 0.733038 0" />
         </collision>
         <visual>
             <geometry>
                 <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
-            <origin xyz="0.01861 0 -0.02100" rpy="0 0 0" />
+            <origin xyz="-0.0030 0 -0.03058" rpy="0 0.733038 0" />
         </visual>
     </link>
 
     <joint name="bl_tibia_to_femur" type="revolute">
         <parent link="bl_femur" />
         <child link="bl_tibia" />
-        <origin xyz="-0.05367 0 -0.05261" rpy="0 0 0" />
-        <axis xyz="0 1 0" />
+        <origin xyz="0 0 -0.07560" rpy="0 0 0" />
+        <axis xyz="0 -1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
 
@@ -373,21 +373,21 @@
                 <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
-            <origin xyz="0.0246 0 -0.02835" rpy="0 -1.571 0" />
+            <origin xyz="0 0 -0.03806" rpy="0 -0.785398 0" />
         </collision>
         <visual>
             <geometry>
                 <mesh filename="file://$(find goddard_description)/meshes/femur.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
-            <origin xyz="0.0246 0 -0.02835" rpy="0 -1.571 0" />
+            <origin xyz="0 0 -0.03806" rpy="0 -0.785398 0" />
         </visual>
     </link>
 
     <joint name="br_femur_to_hip" type="revolute">
         <parent link="br_hip" />
         <child link="br_femur" />
-        <origin xyz="0 0.03558 -0.00469" rpy="0 0 0" />
+        <origin xyz="0 0.03558 -0.00300" rpy="0 0 0" />
         <axis xyz="0 1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
@@ -403,21 +403,21 @@
                 <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
-            <origin xyz="-0.01861 0 -0.02100" rpy="0 0 3.142" />
+            <origin xyz="-0.0030 0 -0.03058" rpy="0 0.733038 3.142" />
         </collision>
         <visual>
             <geometry>
                 <mesh filename="file://$(find goddard_description)/meshes/tibia.stl"
                     scale="0.001 0.001 0.001" />
             </geometry>
-            <origin xyz="-0.01861 0 -0.02100" rpy="0 0 3.142" />
+            <origin xyz="-0.0030 0 -0.03058" rpy="0 0.733038 3.142" />
         </visual>
     </link>
 
     <joint name="br_tibia_to_femur" type="revolute">
         <parent link="br_femur" />
         <child link="br_tibia" />
-        <origin xyz="0.05367 0 -0.05261" rpy="0 0 0" />
+        <origin xyz="0 0 -0.07560" rpy="0 0 0" />
         <axis xyz="0 1 0" />
         <limit lower="-1.571" upper="1.571" effort="1000" velocity="0.5" />
     </joint>
