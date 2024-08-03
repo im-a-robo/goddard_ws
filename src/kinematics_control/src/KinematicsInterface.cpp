@@ -26,21 +26,16 @@ double KinematicsInterface::calc_hip_joint_delta(double y, double z) {
 std::tuple<double, double> KinematicsInterface::calc_femur_and_tibia_joint_delta(double x, double z) {
     double hypot = sqrt(sqr(x) + sqr(z));
 
-    double phi = acos(abs(x) / hypot);
-    double lowercase_phi = acos((sqr(femur_to_tibia_dist) + sqr(x) + sqr(z) - sqr(tibia_to_foot_dist)) /
-                                (2 * femur_to_tibia_dist * hypot));
+    double phi = M_PI_2 - acos(abs(x) / hypot);
+    double lowercase_phi =
+        acos((sqr(femur_to_tibia_dist) + sqr(hypot) - sqr(tibia_to_foot_dist)) / (2 * femur_to_tibia_dist * hypot));
 
-    // Assume that q3 will always be greater than zero for this robot
-    double q2, q3;
+    double q2 = phi - lowercase_phi;
 
-    if (x >= 0) {
-        q2 = M_PI_2 - lowercase_phi - phi;
-    } else {
-        q2 = -M_PI_2 - lowercase_phi + phi;
-    }
+    double lowercase_phi_2 = acos((sqr(femur_to_tibia_dist) + sqr(tibia_to_foot_dist) - sqr(hypot)) /
+                                  (2 * femur_to_tibia_dist * tibia_to_foot_dist));
 
-    q3 = acos((sqr(femur_to_tibia_dist) + sqr(tibia_to_foot_dist) - sqr(x) - sqr(z)) /
-               (2 * femur_to_tibia_dist * tibia_to_foot_dist));
+    double q3 = M_PI - lowercase_phi_2;
 
     return {q2, q3};
 }

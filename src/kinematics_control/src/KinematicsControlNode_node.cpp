@@ -16,8 +16,8 @@ KinematicsControlNode::KinematicsControlNode(const rclcpp::NodeOptions& options)
     fl_leg_angles = {0, 0, 0};
     interface = KinematicsInterface(0.03558, 0.075, 0.0803, &fl_leg_angles);
 
-    test_point.pose.position.x = 0;
-    test_point.pose.position.y = 0.015;
+    test_point.pose.position.x = -0.015;
+    test_point.pose.position.y = 0;
     test_point.pose.position.z = 0.03;
     test_point.header.frame_id = "fl_foot";
 
