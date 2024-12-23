@@ -26,7 +26,7 @@ double KinematicsInterface::calc_hip_joint_delta(double y, double z) {
 std::tuple<double, double> KinematicsInterface::calc_femur_and_tibia_joint_delta(double x, double z) {
     double hypot = sqrt(sqr(x) + sqr(z));
 
-    double phi = M_PI_2 - acos(abs(x) / hypot);
+    double phi = 2 * M_PI - acos(abs(x) / hypot);
     double lowercase_phi =
         acos((sqr(femur_to_tibia_dist) + sqr(hypot) - sqr(tibia_to_foot_dist)) / (2 * femur_to_tibia_dist * hypot));
 

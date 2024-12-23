@@ -55,6 +55,8 @@ void KinematicsControlNode::test_cb() {
         transformed = true;
     }
 
+    RCLCPP_INFO(this->get_logger(), "%d, %d, %d", fl_leg_angles.at(0), fl_leg_angles.at(1), fl_leg_angles.at(2));
+
     msg.data = {fl_leg_angles.at(0), fl_leg_angles.at(1), fl_leg_angles.at(2), 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     test_point_mk_pub->publish(test_point_mk);
